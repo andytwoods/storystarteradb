@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <button type='button' onclick="start()">start</button>
+    <script src="https://cdn.jsdelivr.net/gh/webadb/webadb.js@master/webadb.js"></script>
+</head>
+<body>
+
+
+<script>
+    var start = async function() {
+        let webusb = await Adb.open("WebUSB");
+        console.log(111)
+        let adb = await webusb.connectAdb("host::");
+        let shell = await adb.shell("uname -a");
+        console.log(await shell.receive());
+    }
+
+</script>
+</body>
+</html>
